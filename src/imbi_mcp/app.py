@@ -1,6 +1,7 @@
 import typing as t
 
 import typer
+from imbi_common import sentry
 
 from imbi_mcp import server
 
@@ -33,6 +34,7 @@ def serve(
     ] = 8001,
 ) -> None:
     """Run the Imbi MCP server."""
+    sentry.init()
     try:
         mcp = server.create_server(api_url)
     except Exception as err:
