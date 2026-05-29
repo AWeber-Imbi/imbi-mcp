@@ -468,7 +468,7 @@ wheels = [
 [[package]]
 name = "imbi-common"
 version = "2.8.0"
-source = { git = "https://github.com/AWeber-Imbi/imbi-common.git?branch=feature%2Fmcp-toolset-exclusions#7a1dbe2793df714ccddb93b094092a80a7d739ab" }
+source = { git = "https://github.com/AWeber-Imbi/imbi-common.git?branch=main#cd4b108a7726901d325dd58526235720ec278619" }
 dependencies = [
   { name = "cryptography" },
   { name = "httpx" },
@@ -518,7 +518,7 @@ dev = [
 requires-dist = [
   { name = "fastmcp", specifier = ">=3.0.0" },
   { name = "httpx", specifier = ">=0.28.1" },
-  { name = "imbi-common", extras = ["mcp"], git = "https://github.com/AWeber-Imbi/imbi-common.git?branch=feature%2Fmcp-toolset-exclusions" },
+  { name = "imbi-common", extras = ["mcp"], git = "https://github.com/AWeber-Imbi/imbi-common.git?branch=main" },
   { name = "pydantic", specifier = "~=2.12" },
   { name = "pyjwt", specifier = ">=2.10" },
   { name = "sentry-sdk", specifier = ">=2.48.0" },
