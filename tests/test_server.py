@@ -105,6 +105,28 @@ class CreateServerTests(unittest.TestCase):
         )
 
     @mock.patch('imbi_mcp.server.httpx.get')
+    def test_status_custom_route_with_auth_enabled(
+        self, mock_get: mock.Mock
+    ) -> None:
+        mock_get.return_value = self.mock_response
+        mcp = server.create_server(
+            'http://localhost:8000',
+            public_url='https://host/mcp',
+            auth_server_url='https://host',
+        )
+        with starlette_testclient.TestClient(mcp.http_app()) as client:
+            response = client.get('/status')
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(
+            {
+                'service': 'imbi-mcp',
+                'status': 'ok',
+                'version': imbi_mcp.version,
+            },
+            response.json(),
+        )
+
+    @mock.patch('imbi_mcp.server.httpx.get')
     def test_fetches_spec_from_api_url(self, mock_get: mock.Mock) -> None:
         mock_get.return_value = self.mock_response
         server.create_server('http://example:9000')
